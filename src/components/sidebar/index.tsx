@@ -1,5 +1,6 @@
 'use client'
 
+import {useLayoutContext} from '@/modules/layout-context'
 import {
   Home,
   Search,
@@ -11,6 +12,8 @@ import {
   Pin,
 } from '@/components/icons'
 import cn from '@/utils/cn'
+import {usePathname, useRouter} from 'next/navigation'
+import Link from 'next/link'
 const icons = [
   {
     name: 'home',
@@ -39,22 +42,39 @@ const icons = [
   },
 ]
 
-interface Props {
-  pathname: string
-}
-
 const wrapClassName =
   'cursor-pointer flex items-center justify-center transition-all duration-300 active:scale-90'
 
-const Sidebar = ({pathname}: Props) => {
+const Sidebar = () => {
+  const router = useRouter()
+  const pathname = usePathname()
+  const {userInfo} = useLayoutContext()
+
+  const onClick = (path?: string) => {
+    switch (path) {
+      case '/user':
+        if (userInfo) {
+          router.push(`/@${userInfo.username}`)
+        } else {
+          router.push('/login')
+        }
+        break
+      default:
+        router.push(path || '')
+        break
+    }
+  }
   return (
     <aside className='w-[76px] fixed top-0 left-0 h-screen flex flex-col items-center'>
       <div className='py-4 mx-auto w-fit'>
-        <Logo className='fill-gray-50' width={34} height={34} />
+        <Link href='/'>
+          <Logo className='fill-gray-50' width={34} height={34} />
+        </Link>
       </div>
       <div className='w-15 flex-1 flex flex-col gap-4 justify-center'>
         {icons.map(({name, icon: Icon, path, size}) => {
-          const isActive = pathname === path
+          const isActive =
+            pathname === path || (path === '/user' && pathname.startsWith('/@'))
           return (
             <div
               key={name}
@@ -68,6 +88,7 @@ const Sidebar = ({pathname}: Props) => {
                     !path,
                 },
               )}
+              onClick={() => onClick(path)}
             >
               <Icon width={size || 24} height={size || 24} />
             </div>
