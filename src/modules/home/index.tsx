@@ -1,10 +1,12 @@
+import AddPost from '@/components/add-post'
 import Header from '@/components/header'
-import AddPost from './add-post'
 
 const Home = () => {
   return (
     <Header title='For you'>
-      <AddPost />
+      <div className='pt-2'>
+        <AddPost />
+      </div>
     </Header>
   )
 }

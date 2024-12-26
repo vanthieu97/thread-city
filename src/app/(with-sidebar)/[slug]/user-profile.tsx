@@ -16,7 +16,8 @@ const UserProfile = ({profile}: Props) => {
   const {userInfo, setUserInfo} = useLayoutContext()
   const isOwnProfile = useMemo(() => {
     return userInfo?.username === profile.username
-  }, [profile])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const [userProfile, setUserProfile] = useState(
     isOwnProfile ? (userInfo as Profile) : profile,
@@ -27,7 +28,7 @@ const UserProfile = ({profile}: Props) => {
 
   useEffect(
     () => {
-      if (userInfo?.username === profile.username) {
+      if (isOwnProfile) {
         setUserProfile(userInfo as Profile)
       }
     },

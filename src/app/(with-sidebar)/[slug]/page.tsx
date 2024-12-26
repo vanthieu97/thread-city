@@ -1,6 +1,5 @@
-import Header from '@/components/header'
+import AddPost from '@/components/add-post'
 import getProfile from '@/utils/server/get-profile'
-import UserProfile from './user-profile'
 import {notFound} from 'next/navigation'
 
 interface Props {
@@ -15,11 +14,7 @@ const Page = async ({params}: Props) => {
   if (!profile) {
     return notFound()
   }
-  return (
-    <Header title='Profile'>
-      <UserProfile profile={profile} />
-    </Header>
-  )
+  return <AddPost />
 }
 
 export default Page

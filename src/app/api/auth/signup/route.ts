@@ -43,7 +43,7 @@ export async function POST(request: Request) {
     })
 
     // 5. Create session token
-    const token = await new SignJWT({username})
+    const token = await new SignJWT({username, id: user.id})
       .setProtectedHeader({alg: 'HS256'})
       .setExpirationTime('24h')
       .sign(new TextEncoder().encode(process.env.JWT_SECRET))
