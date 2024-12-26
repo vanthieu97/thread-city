@@ -1,5 +1,5 @@
 import Image from '@/components/image'
-import LoginForm from './login-form'
+import SignupForm from './signup-form'
 import Link from 'next/link'
 
 const Page = () => {
@@ -13,11 +13,11 @@ const Page = () => {
           className='object-contain object-top'
         />
       </div>
-      <LoginForm />
+      <SignupForm />
       <p className='text-gray-500 text-sm text-center mt-4'>
-        You don't have an account?{' '}
-        <Link href='/signup' className='text-blue-400 hover:underline'>
-          Sign up
+        Already have an account?{' '}
+        <Link href='/login' className='text-blue-400 hover:underline'>
+          Log in
         </Link>
       </p>
     </div>

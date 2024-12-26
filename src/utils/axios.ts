@@ -14,7 +14,7 @@ axios.interceptors.request.use((config) => {
 axios.interceptors.response.use(
   (response) => response,
   (error) => {
-    return Promise.reject(error.response)
+    return Promise.reject(error.response as ErrorResponse)
   },
 )
 
