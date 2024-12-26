@@ -5,14 +5,16 @@ import Image from '@/components/image'
 import RichTextarea, {RichTextareaRef} from '@/components/rich-text-area'
 import {useLayoutContext} from '@/modules/layout-context'
 import axios from '@/utils/axios'
+import {useRouter} from 'next/navigation'
 import {useRef, useState, useTransition} from 'react'
-import toast from '../toast'
+import toast from '../../components/toast'
 
 const AddPost = () => {
   const [content, setContent] = useState('')
   const {userInfo} = useLayoutContext()
   const [isPending, startTransition] = useTransition()
   const contentRef = useRef<RichTextareaRef>(null)
+  const router = useRouter()
   if (!userInfo) {
     return null
   }
@@ -21,9 +23,11 @@ const AddPost = () => {
     const content = contentRef.current?.getContent()
     startTransition(async () => {
       try {
-        await axios.post('/api/post', {content})
+        await axios.post('/api/posts', {content})
         toast.success('Post created successfully')
         contentRef.current?.reset()
+        // TODO: refresh posts instead of router.refresh()
+        router.refresh()
       } catch (error) {
         toast.error((error as ErrorResponse)?.data?.error || 'Failed to post')
       }
@@ -31,7 +35,7 @@ const AddPost = () => {
   }
 
   return (
-    <div className='px-6 py-4 flex gap-2.5 items-center border-b-[0.5px] border-gray-800'>
+    <div className='px-6 py-4 flex gap-2.5 items-center border-b-[0.5px] border-gray-25'>
       <Image
         src={userInfo.avatar}
         alt='avatar'

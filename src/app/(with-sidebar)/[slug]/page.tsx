@@ -1,4 +1,6 @@
-import AddPost from '@/components/add-post'
+import AddPost from '@/modules/add-post'
+import GetPosts from '@/modules/get-posts'
+import getPosts from '@/utils/server/get-posts'
 import getProfile from '@/utils/server/get-profile'
 import {notFound} from 'next/navigation'
 
@@ -14,7 +16,14 @@ const Page = async ({params}: Props) => {
   if (!profile) {
     return notFound()
   }
-  return <AddPost />
+  const posts = await getPosts({page: 0, pageSize: 10})
+
+  return (
+    <>
+      <AddPost />
+      <GetPosts initialPosts={posts} />
+    </>
+  )
 }
 
 export default Page
