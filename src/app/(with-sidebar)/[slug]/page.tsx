@@ -4,9 +4,9 @@ import UserProfile from './user-profile'
 import {notFound} from 'next/navigation'
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 const Page = async ({params}: Props) => {

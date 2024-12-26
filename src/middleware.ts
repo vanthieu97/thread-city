@@ -1,7 +1,7 @@
 import {NextRequest, NextResponse} from 'next/server'
 
 const middleware = (request: NextRequest) => {
-  const {searchParams, pathname, search} = request.nextUrl
+  const {pathname} = request.nextUrl
   const requestHeaders = new Headers(request.headers)
   requestHeaders.set('x-pathname', pathname)
   return NextResponse.next({
