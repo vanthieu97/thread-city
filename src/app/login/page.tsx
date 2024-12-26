@@ -15,7 +15,7 @@ const Page = () => {
       </div>
       <LoginForm />
       <p className='text-gray-500 text-sm text-center mt-4'>
-        You don't have an account?{' '}
+        You don&apos;t have an account?{' '}
         <Link href='/signup' className='text-blue-400 hover:underline'>
           Sign up
         </Link>
