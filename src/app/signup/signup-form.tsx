@@ -11,6 +11,7 @@ interface LoginFormData {
   password: string
   confirmPassword: string
 }
+
 const SignupForm = () => {
   const {register, handleSubmit, watch} = useForm<LoginFormData>()
   const {username, password} = watch()
