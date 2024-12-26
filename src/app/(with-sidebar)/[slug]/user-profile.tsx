@@ -6,7 +6,7 @@ import Modal from '@/components/modal'
 import toast from '@/components/toast'
 import {useLayoutContext} from '@/modules/layout-context'
 import axios from '@/utils/axios'
-import {useEffect, useState, useTransition} from 'react'
+import {useEffect, useMemo, useState, useTransition} from 'react'
 import ProfileForm from './profile-form'
 interface Props {
   profile: Profile
@@ -14,8 +14,12 @@ interface Props {
 
 const UserProfile = ({profile}: Props) => {
   const {userInfo, setUserInfo} = useLayoutContext()
+  const isOwnProfile = useMemo(() => {
+    return userInfo?.username === profile.username
+  }, [profile])
+
   const [userProfile, setUserProfile] = useState(
-    userInfo?.username === profile.username ? (userInfo as Profile) : profile,
+    isOwnProfile ? (userInfo as Profile) : profile,
   )
   const {name, username, bio, avatar} = userProfile
   const [isOpen, setIsOpen] = useState(false)
@@ -71,16 +75,18 @@ const UserProfile = ({profile}: Props) => {
         </div>
         <span>{bio || 'No bio yet'}</span>
       </div>
-      <div className='px-6 py-4'>
-        <Button
-          variant='outline'
-          fullWidth
-          className='text-base'
-          onClick={onOpen}
-        >
-          Edit profile
-        </Button>
-      </div>
+      {isOwnProfile && (
+        <div className='px-6 py-3'>
+          <Button
+            variant='outline'
+            fullWidth
+            className='text-base'
+            onClick={onOpen}
+          >
+            Edit profile
+          </Button>
+        </div>
+      )}
       <Modal isOpen={isOpen} fullWidth maxWidth='lg' onClose={onClose}>
         <ProfileForm
           profile={userProfile}
