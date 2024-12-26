@@ -8,7 +8,7 @@ const Input = ({label, className, ...props}: InputProps) => {
       className={`
           w-full
           p-4
-          bg-gray-950
+          bg-transparent
           border 
           border-transparent
           rounded-xl

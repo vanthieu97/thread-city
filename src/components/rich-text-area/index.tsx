@@ -28,7 +28,7 @@ const RichTextarea = ({
       Link.configure({
         openOnClick: false,
         HTMLAttributes: {
-          class: 'text-blue-500 underline',
+          class: 'text-blue-400 underline',
         },
       }),
       TextStyle,

@@ -19,15 +19,18 @@ export default {
           800: '#2d2d2d',
           900: '#181818',
           950: '#1e1e1e',
+          1000: '#0f0f0f',
         },
         white: {
           5: '#ffffff0d',
         },
       },
       width: {
+        13: '3.25rem',
         15: '3.75rem',
       },
       height: {
+        13: '3.25rem',
         15: '3.75rem',
       },
       boxShadow: {
@@ -54,6 +57,10 @@ export default {
       animation: {
         'slide-in': 'slide-in 0.3s ease-out',
         'slide-out': 'slide-out 0.3s ease-out',
+      },
+      fontSize: {
+        base: '0.9375rem',
+        md: '1rem',
       },
     },
     fontFamily: {

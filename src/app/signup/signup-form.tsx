@@ -31,7 +31,6 @@ const SignupForm = () => {
         window.location.href = '/'
       }
     } catch (error) {
-      console.log(error)
       toast.error(
         (error as ErrorResponse)?.data?.error || 'Something went wrong',
       )
@@ -40,20 +39,24 @@ const SignupForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='max-w-[370px] mx-auto'>
-      <p className='text-base text-gray-50 font-bold text-center mb-4'>
+      <p className='text-md text-gray-50 font-bold text-center mb-4'>
         Sign up to Threads
       </p>
-      <Input {...register('username')} placeholder='Username, phone or email' />
+      <Input
+        {...register('username')}
+        placeholder='Username, phone or email'
+        className='bg-gray-950'
+      />
       <Input
         {...register('password')}
         placeholder='Password'
-        className='mt-2'
+        className='mt-2 bg-gray-950'
         type='password'
       />
       <Input
         {...register('confirmPassword')}
         placeholder='Confirm Password'
-        className='my-2'
+        className='my-2 bg-gray-950'
         type='password'
       />
       <Button

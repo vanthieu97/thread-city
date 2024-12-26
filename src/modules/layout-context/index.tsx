@@ -1,9 +1,10 @@
 'use client'
 
-import {createContext, useContext, ReactNode} from 'react'
+import {createContext, useContext, ReactNode, useState} from 'react'
 
 interface LayoutContextType {
   userInfo: Profile | null
+  setUserInfo: (userInfo: Profile | null) => void
 }
 
 interface LayoutProviderProps extends LayoutContextType {
@@ -14,9 +15,14 @@ export const LayoutContext = createContext<LayoutContextType | undefined>(
   undefined,
 )
 
-export const LayoutProvider = ({userInfo, children}: LayoutProviderProps) => {
+export const LayoutProvider = ({
+  userInfo: initialUserInfo,
+  children,
+}: LayoutProviderProps) => {
+  const [userInfo, setUserInfo] = useState(initialUserInfo)
+
   return (
-    <LayoutContext.Provider value={{userInfo}}>
+    <LayoutContext.Provider value={{userInfo, setUserInfo}}>
       {children}
     </LayoutContext.Provider>
   )

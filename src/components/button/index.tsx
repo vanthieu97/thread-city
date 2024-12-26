@@ -36,11 +36,21 @@ export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   isLoading?: boolean
+  loadingText?: string
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    {className, variant, size, isLoading, children, fullWidth, ...props},
+    {
+      className,
+      variant,
+      size,
+      isLoading,
+      children,
+      fullWidth,
+      loadingText,
+      ...props
+    },
     ref,
   ) => {
     return (
@@ -53,7 +63,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {isLoading ? (
           <>
             <Loader2 className='mr-2 h-4 w-4 animate-spin rounded' />
-            Please wait
+            {loadingText || 'Please wait'}
           </>
         ) : (
           children
