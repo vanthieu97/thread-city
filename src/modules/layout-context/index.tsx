@@ -7,8 +7,9 @@ interface LayoutContextType {
   setUserInfo: (userInfo: Profile | null) => void
 }
 
-interface LayoutProviderProps extends LayoutContextType {
+interface LayoutProviderProps {
   children: ReactNode
+  userInfo: Profile | null
 }
 
 export const LayoutContext = createContext<LayoutContextType | undefined>(
