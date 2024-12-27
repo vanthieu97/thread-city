@@ -15,11 +15,11 @@ const Post = ({post}: {post: PostWithAuthor}) => {
         height={36}
         className='rounded-full aspect-square'
       />
-      <div className='flex flex-col gap-[3px]'>
+      <div>
         <p className='font-semibold'>{author.username}</p>
-        <div dangerouslySetInnerHTML={{__html: content}} />
+        <div dangerouslySetInnerHTML={{__html: content}} className='mt-[3px]' />
         {!!media?.length && (
-          <div className='mt-1 flex gap-3 flex-wrap'>
+          <div className='mt-2 flex gap-3 flex-wrap'>
             {media.map(({url, alt}, index) => (
               <div
                 key={index}
