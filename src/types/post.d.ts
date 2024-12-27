@@ -1,4 +1,4 @@
-import {Post} from '@prisma/client'
+import {Media, Post} from '@prisma/client'
 
 interface PostSearchParams {
   page?: number
@@ -7,4 +7,5 @@ interface PostSearchParams {
 
 interface PostWithAuthor extends Post {
   author: User
+  media?: Media[]
 }

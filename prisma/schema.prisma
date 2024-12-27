@@ -9,20 +9,20 @@ generator client {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  email     String?   @unique
-  username  String   @unique
-  name      String?
-  bio       String?
-  link      String?
-  avatar    String?
-  posts     Post[]
-  likes     Like[]
-  followers Follow[] @relation("following")
-  following Follow[] @relation("follower")
-  comments  Comment[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           String    @id @default(cuid())
+  email        String?   @unique
+  username     String    @unique
+  name         String?
+  bio          String?
+  link         String?
+  avatar       String?
+  posts        Post[]
+  likes        Like[]
+  followers    Follow[]  @relation("following")
+  following    Follow[]  @relation("follower")
+  comments     Comment[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
   passwordHash String
 }
 
@@ -34,7 +34,7 @@ model Post {
   media     Media[]
   likes     Like[]
   comments  Comment[]
-  parentId  String?   @map("parent_id") // for replies
+  parentId  String?   @map("parent_id")
   parent    Post?     @relation("PostToPost", fields: [parentId], references: [id])
   replies   Post[]    @relation("PostToPost")
   createdAt DateTime  @default(now())
@@ -74,12 +74,13 @@ model Comment {
 }
 
 model Media {
-  id        String   @id @default(cuid())
+  id        String    @id @default(cuid())
   url       String
+  alt       String?
   type      MediaType
-  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  post      Post      @relation(fields: [postId], references: [id], onDelete: Cascade)
   postId    String
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
 }
 
 enum MediaType {

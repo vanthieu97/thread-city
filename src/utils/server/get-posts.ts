@@ -16,14 +16,8 @@ const getPosts = async ({page, pageSize}: Props): Promise<PostWithAuthor[]> => {
       createdAt: 'desc',
     },
     include: {
-      author: {
-        select: {
-          id: true,
-          username: true,
-          name: true,
-          avatar: true,
-        },
-      },
+      author: true,
+      media: true,
     },
   })
 

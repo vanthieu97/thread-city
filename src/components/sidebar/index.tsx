@@ -28,6 +28,7 @@ const icons = [
   {
     name: 'plus',
     icon: Plus,
+    path: '/add-post',
   },
   {
     name: 'heart',
@@ -48,9 +49,9 @@ const wrapClassName =
 const Sidebar = () => {
   const router = useRouter()
   const pathname = usePathname()
-  const {userInfo} = useLayoutContext()
+  const {userInfo, setShowPostModal} = useLayoutContext()
 
-  const onClick = (path?: string) => {
+  const onClick = (path: string) => {
     switch (path) {
       case '/user':
         if (userInfo) {
@@ -59,8 +60,11 @@ const Sidebar = () => {
           router.push('/login')
         }
         break
+      case '/add-post':
+        setShowPostModal(true)
+        break
       default:
-        router.push(path || '')
+        router.push(path)
         break
     }
   }
@@ -80,12 +84,12 @@ const Sidebar = () => {
               key={name}
               className={cn(
                 wrapClassName,
-                'w-15 h-12 hover:bg-white-5  rounded-xl ',
+                'w-15 h-12 hover:bg-white/5  rounded-xl ',
                 {
                   'fill-gray-50 text-gray-50': isActive,
                   'fill-transparent text-gray-600': !isActive,
-                  'bg-white-5 hover:fill-gray-50 hover:text-gray-50 text-gray-500':
-                    !path,
+                  'bg-white/5 hover:fill-gray-50 hover:text-gray-50 text-gray-500':
+                    path === '/add-post',
                 },
               )}
               onClick={() => onClick(path)}

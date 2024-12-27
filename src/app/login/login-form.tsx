@@ -32,7 +32,7 @@ const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='max-w-[370px] mx-auto'>
-      <p className='text-md text-gray-50 font-bold text-center mb-4'>
+      <p className='text-lg text-gray-50 font-bold text-center mb-4'>
         Log in with your Instagram account
       </p>
       <Input

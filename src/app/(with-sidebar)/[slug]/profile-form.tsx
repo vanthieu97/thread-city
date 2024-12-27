@@ -64,9 +64,9 @@ const ProfileForm = ({profile, onSubmit, isPending}: Props) => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onFinish)}>
+    <form onSubmit={handleSubmit(onFinish)} className='p-6'>
       <div className='flex gap-4'>
-        <ProfileField label='Username' className='flex-1 pt-0'>
+        <ProfileField label='Username' className='flex-1 !pt-0'>
           <div className='flex gap-1 items-center'>
             <Lock width={14} height={14} className='fill-gray-50' />
             {username}

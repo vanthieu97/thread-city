@@ -70,7 +70,7 @@ const UserProfile = ({profile}: Props) => {
               alt={username}
               width={84}
               height={84}
-              className='rounded-full'
+              className='rounded-full aspect-square'
             />
           </div>
         </div>

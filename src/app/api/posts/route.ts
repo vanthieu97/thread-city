@@ -1,16 +1,17 @@
 import {prisma} from '@/lib/db'
 import getPosts from '@/utils/server/get-posts'
 import getSession from '@/utils/server/get-session'
+import {Media} from '@prisma/client'
 import {NextRequest, NextResponse} from 'next/server'
 interface NewPost {
   content: string
+  media: Media[]
 }
 
 export async function POST(request: Request) {
   try {
     const body: NewPost = await request.json()
-    const {content} = body
-
+    const {content, media} = body
     const userInfo = await getSession()
 
     if (!userInfo?.user) {
@@ -21,6 +22,11 @@ export async function POST(request: Request) {
       data: {
         content,
         authorId: userInfo.user.id,
+        ...(media?.length && {
+          media: {
+            create: media,
+          },
+        }),
       },
     })
 

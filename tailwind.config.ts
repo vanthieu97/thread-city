@@ -21,9 +21,6 @@ export default {
           950: '#1e1e1e',
           1000: '#0f0f0f',
         },
-        white: {
-          5: '#ffffff0d',
-        },
       },
       width: {
         13: '3.25rem',
@@ -37,6 +34,7 @@ export default {
         custom: '0 0 12px 0 rgba(0, 0, 0, 0.04), 0 0 0 48px rgb(10 10 10)',
       },
       borderRadius: {
+        md: '0.5rem',
         lg: '0.625rem',
       },
       borderColor: {
@@ -60,7 +58,8 @@ export default {
       },
       fontSize: {
         base: '0.9375rem',
-        md: '1rem',
+        lg: '1rem',
+        xl: '1.0625rem',
       },
     },
     fontFamily: {

@@ -2,7 +2,7 @@ import {cva, type VariantProps} from 'class-variance-authority'
 import {useEffect, useRef, useState} from 'react'
 
 const modalStyles = cva(
-  'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-1000 rounded-lg border-[0.5px] border-gray-800 z-50 mx-auto',
+  'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-1000 rounded-2xl border-[0.5px] border-gray-800 z-50 mx-auto',
   {
     variants: {
       fullWidth: {
@@ -76,7 +76,7 @@ const Modal = ({
       {showModal && (
         <div ref={modalRef} className={modalStyles({fullWidth, maxWidth})}>
           {title && (
-            <div className='flex items-center justify-between p-6 border-b'>
+            <div className='flex items-center justify-between border-b'>
               <h2 className='text-xl font-semibold'>{title}</h2>
               <button
                 onClick={onClose}
@@ -96,7 +96,7 @@ const Modal = ({
               </button>
             </div>
           )}
-          <div className='p-6 max-h-[calc(100vh-10rem)] overflow-y-auto'>
+          <div className='max-h-[calc(100vh-10rem)] overflow-y-auto'>
             {children}
           </div>
         </div>

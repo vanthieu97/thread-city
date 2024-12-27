@@ -46,6 +46,7 @@ const RichTextarea = forwardRef<RichTextareaRef, RichTextareaProps>(
       onUpdate: ({editor}) => {
         onChange?.(editor.getHTML())
       },
+      autofocus: 'end',
     })
 
     const reset = () => {

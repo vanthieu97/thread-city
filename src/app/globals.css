@@ -23,3 +23,9 @@ body {
   font-size: 15px;
   line-height: 21px;
 }
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
