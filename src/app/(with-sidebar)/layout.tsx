@@ -13,7 +13,7 @@ const Layout = async ({children}: Props) => {
   return (
     <LayoutProvider userInfo={userInfo}>
       <Sidebar />
-      <main className='w-full max-w-[640px] mx-auto'>{children}</main>
+      <main className='w-full max-w-screen-sm mx-auto'>{children}</main>
       <PostModal />
     </LayoutProvider>
   )

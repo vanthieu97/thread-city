@@ -69,7 +69,7 @@ const Sidebar = () => {
     }
   }
   return (
-    <aside className='w-[76px] fixed top-0 left-0 h-screen flex flex-col items-center'>
+    <aside className='w-0 sm:w-[76px] overflow-hidden fixed top-0 left-0 h-screen flex flex-col items-center'>
       <div className='py-4 mx-auto w-fit'>
         <Link href='/'>
           <Logo className='fill-gray-50' width={34} height={34} />

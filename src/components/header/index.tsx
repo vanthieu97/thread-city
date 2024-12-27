@@ -9,9 +9,11 @@ const Header = ({children, title, extra}: Props) => {
   return (
     <div className='min-h-screen flex flex-col'>
       <header className='h-15 flex items-center justify-center sticky top-0 bg-background z-10'>
-        <div className='absolute bottom-0 left-0 right-0 h-[0.5px] bg-gray-800'></div>
-        <div className='absolute -left-3 -bottom-6 w-9 h-9 overflow-hidden after:content-[""] after:absolute after:left-3 after:top-3 after:border-[0.5px] after:border-gray-800 after:rounded-3xl after:w-12 after:h-12 after:shadow-custom'></div>
-        <div className='absolute -right-3 -bottom-6 w-9 h-9 overflow-hidden after:content-[""] after:absolute after:right-3 after:top-3 after:border-[0.5px] after:border-gray-800 after:rounded-3xl after:w-12 after:h-12 after:shadow-custom'></div>
+        <div className='absolute left-0 right-0 top-full h-12 overflow-hidden'>
+          <div className='absolute top-0 left-0 right-0 h-[0.5px] bg-gray-800'></div>
+          <div className='absolute -left-3 -top-3 w-9 h-9 overflow-hidden after:content-[""] after:absolute after:left-3 after:top-3 after:border-[0.5px] after:border-gray-800 after:rounded-3xl after:w-12 after:h-12 after:shadow-custom'></div>
+          <div className='absolute -right-3 -top-3 w-9 h-9 overflow-hidden after:content-[""] after:absolute after:right-3 after:top-3 after:border-[0.5px] after:border-gray-800 after:rounded-3xl after:w-12 after:h-12 after:shadow-custom'></div>
+        </div>
         <span className='font-semibold text-gray-50'>{title}</span>
         {extra}
       </header>

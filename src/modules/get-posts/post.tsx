@@ -19,12 +19,12 @@ const Post = ({post}: {post: PostWithAuthor}) => {
         <p className='font-semibold'>{author.username}</p>
         <div dangerouslySetInnerHTML={{__html: content}} className='mt-[3px]' />
         {!!media?.length && (
-          <div className='mt-2 flex gap-3 flex-wrap'>
+          <div className='mt-2 flex gap-3 flex-wrap overflow-hidden'>
             {media.map(({url, alt}, index) => (
               <div
                 key={index}
                 className={cn(
-                  'shrink-0 relative rounded-md border border-gray-25 pointer-events-none select-none overflow-hidden',
+                  'shrink-0 relative rounded-md border border-gray-25 pointer-events-none select-none overflow-hidden max-w-full',
                   moreThanOneImage && 'h-60',
                 )}
               >
