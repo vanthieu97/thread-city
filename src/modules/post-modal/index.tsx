@@ -142,7 +142,7 @@ const PostModal = () => {
                 {imagePreviews.map(({alt, url}, index) => (
                   <div
                     key={index}
-                    className='shrink-0 h-60 relative rounded-md border border-gray-25 pointer-events-none select-none'
+                    className='shrink-0 h-60 relative rounded-md border border-gray-25 pointer-events-none select-none overflow-hidden'
                   >
                     <Image
                       src={url}
